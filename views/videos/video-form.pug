@@ -1,0 +1,31 @@
+extends ../layout
+
+block content
+  div(class="d-flex flex-row content mx-auto")
+    div(class="profile-container")
+      include ../includes/profile
+    div(class="flex-fill")
+      form#upload-form(action="/api/videos", method="POST", enctype="multipart/form-data")
+        div(class="card-header") Poster une vidéo
+        div(class="card-body")
+          div(class="mb-3")
+            input(class="form-control" type="text" name="title" placeholder="Titre de la vidéo")
+          div(class="mb-3")
+            textarea(class="form-control" name="description" placeholder="Description de la vidéo")
+          div(class="mb-3")
+            select(class="form-control" name="category")
+              option(value="Action") Action
+              option(value="Comedie") Comédie
+              option(value="Drame") Drame
+              option(value="Horreur") Horreur
+              option(value="Science-fiction") Science-fiction
+              option(value="Autre") Autre
+          if errors
+            ul(class="my-2")
+              each error in errors
+                li(class="text-danger")= error
+          div(class="w-100")
+            input(type="file", accept="video/*", name="video")
+            button(class="btn btn-primary btn-video me-3" type="submit") Envoyer une vidéo
+        p#upload-message(style="display: none") SVP Patientez pendant que nous envoyons la vidéo...
+  script(defer='', type='text/javascript', src="/javascripts/upload.js")

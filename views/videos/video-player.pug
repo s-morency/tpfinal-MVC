@@ -1,0 +1,9 @@
+extends ../layout
+
+block content
+  div(class="d-flex flex-row content mx-auto")
+    div(class="profile-container")
+      include ../includes/profile
+    div(class="flex-fill")
+      video(width="640" height="360" controls)
+        source(src=`/videos/${video.filename}`, type="video/mp4")

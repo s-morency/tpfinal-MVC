@@ -1,0 +1,11 @@
+extends ../layout.pug
+
+block content
+  div(class="d-flex flex-row content mx-auto")
+    div(class="profile-container")
+      include ../includes/profile.pug
+    div(class="flex-fill d-flex flex-column")
+      div(class="card video-element")
+        div(class="card-body")
+          video(width="100%" controls)
+            source(src=`${video.filename}`, type="video/mp4")
